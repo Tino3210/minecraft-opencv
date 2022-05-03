@@ -1,9 +1,10 @@
 # import folder image
-from image import capture, diamondFinder
+from diamondFinder import * 
+
 
 if __name__ == "__main__":
     
-    diamond_finder = diamondFinder.DiamondFinder()
+    diamond_finder = DiamondFinder()
     
     while (True):
         if diamond_finder.isDiamond():
