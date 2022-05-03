@@ -3,6 +3,7 @@ import imutils
 from capture import WindowCapture
 from diamondFindecConst import *
 
+
 class DiamondFinder():
     def __init__(self, name='Minecraft 1.18.2 - Singleplayer'):
         self.wincap = WindowCapture(name)
@@ -23,13 +24,12 @@ class DiamondFinder():
         res = cv.bitwise_and(mask_diamond,mask_hotbar)
         
         kernel = np.ones((7,7), np.uint8)
-        
         res = cv.dilate(res, kernel, iterations=10)
         res = cv.erode(res, kernel, iterations=10)
-        
-        contours= cv.findContours(res, cv.RETR_EXTERNAL,cv.CHAIN_APPROX_SIMPLE)
-        
-        
+
+        contours = cv.findContours(
+            res, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
+
         contours = imutils.grab_contours(contours)
 
         try:
@@ -44,7 +44,7 @@ class DiamondFinder():
         if self.x_diamond != -1 and self.y_diamond != -1:
             return True
         return False
-    
+
     def is_lava(self):
         self.x_lava = -1
         self.y_lava = -1
@@ -58,8 +58,6 @@ class DiamondFinder():
         mask_lava = cv.erode(mask_lava, kernel, iterations=10)
         
         contours= cv.findContours(mask_lava, cv.RETR_EXTERNAL,cv.CHAIN_APPROX_SIMPLE)
-        
-        
         contours = imutils.grab_contours(contours)
 
         try:
