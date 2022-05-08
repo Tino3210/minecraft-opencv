@@ -1,4 +1,7 @@
 # import folder image
+from multiprocessing.connection import wait
+from cv2 import WINDOW_OPENGL
+from matplotlib.pyplot import pause
 from diamondFinder import *
 from movePlayer import *
 import keyboard
@@ -15,21 +18,25 @@ if __name__ == "__main__":
             player.stop()
             dim = diamond_finder.get_position_diamond()
             print("Diamond ", dim)
-            while ((-10 <= dim[0] <= 10) and (-10 <= dim[0] <= 10)):
+            player.focusOnDiamond(dim)
+            
+            for i in range(5):
+                diamond_finder.capture()
+                diamond_finder.is_diamond()
                 dim = diamond_finder.get_position_diamond()
-                if (dim[0] == -1):
-                    break
                 player.focusOnDiamond(dim)
-
+            
             player.mining()
+            time.sleep(0.8)
+            player.stop()
+            time.sleep(5)
 
         if diamond_finder.is_lava():
             print("Lava : ", diamond_finder.get_position_lava())
             player.step_back()
 
         if keyboard.is_pressed('§'):
-            player.stop('w')
-            player.stop('o')
+            player.stop()
             run = False
         player.move()
         player.mining()

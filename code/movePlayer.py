@@ -9,7 +9,7 @@ class Player:
     def __init__(self):
         self._isMoving = True
         self._isMining = True
-        self._durationTorch = 5
+        self._durationTorch = 20
 
     @property
     def isMoving(self):
@@ -21,22 +21,20 @@ class Player:
 
     def place_torch(self):
         '''Stop the player and place a torch evry 5 seconds'''
-        if(self._isMoving):
-            self._durationTorch -= 1
-            if(self._durationTorch < 0):
-                self._durationTorch = 5
-                self.stop()
-                time.sleep(1)
-                pydirectinput.moveRel(700, 0)
-                pydirectinput.rightClick()
-                pydirectinput.moveRel(-700, 0)
-                self._isMining = True
-                self._isMoving = True
+        self._durationTorch -= 1
+        if(self._durationTorch < 0):
+            self._durationTorch = 20
+            self.stop()
+            time.sleep(1)
+            pydirectinput.moveRel(700, 0)
+            pydirectinput.rightClick()
+            pydirectinput.moveRel(-700, 0)
+            self._isMining = True
+            self._isMoving = True
 
     def mining(self, key='o'):
         '''Mining the diamond'''
-        if(self._isMining):
-            pydirectinput.keyDown(key)
+        pydirectinput.keyDown(key)
 
     def focusOnDiamond(self, position):
         '''Move the mouse to the diamond position'''
@@ -44,8 +42,7 @@ class Player:
     
     def move(self, direction='w'):
         '''Move the player forward'''
-        if(self._isMoving):
-            pydirectinput.keyDown(direction)
+        pydirectinput.keyDown(direction)
 
     def step_back(self, key='s'):
         '''Step back the player to avoid the lava'''
@@ -58,5 +55,3 @@ class Player:
         '''Stop the player'''
         pydirectinput.keyUp(keyW)
         pydirectinput.keyUp(keyClic)
-        self._isMining = False
-        self._isMoving = False

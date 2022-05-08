@@ -56,7 +56,7 @@ class DiamondFinder():
 
         kernel = np.ones((7, 7), np.uint8)
 
-        mask_lava = cv.erode(mask_lava, kernel, iterations=10)
+        mask_lava = cv.erode(mask_lava, kernel, iterations=7)
 
         contours = cv.findContours(
             mask_lava, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
@@ -79,9 +79,6 @@ class DiamondFinder():
         return self.dim
 
     def get_position_diamond(self):
-
-        print(self.dim)
-        print(self.x_diamond, self.y_diamond)
         return ((int)(-self.dim[0]/2 + self.x_diamond), (int)(-self.dim[1]/2 + self.y_diamond))
 
     def get_position_lava(self):
