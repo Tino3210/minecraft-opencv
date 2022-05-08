@@ -1,3 +1,9 @@
+'''
+Description : Capture a window of a software. Use to capture the Minecraft window.
+Author : Ben Johnson
+Link : https://github.com/learncodebygaming/opencv_tutorials/blob/master/004_window_capture/windowcapture.py
+'''
+
 import numpy as np
 import win32gui, win32ui, win32con
 
