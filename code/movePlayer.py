@@ -1,3 +1,10 @@
+'''
+Projet : Diamond Harvester - Traitement d'image
+Description : The bot.
+Author : Izzo Valentino et Loïc Frossard
+Python version : 3.9.2
+'''
+
 from time import sleep
 import pydirectinput
 import time

@@ -1,3 +1,10 @@
+'''
+Projet : Diamond Harvester - Traitement d'image
+Description : Constante colors use for the block detection.
+Author : Izzo Valentino et Loïc Frossard
+Python version : 3.9.2
+'''
+
 import numpy as np
 
 kernel = np.ones((7,7), np.uint8)
