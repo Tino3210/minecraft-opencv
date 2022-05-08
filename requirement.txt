@@ -1,0 +1,7 @@
+keyboard==0.13.5
+matplotlib==3.5.2
+numpy==1.20.1
+opencv-python==4.5.3.56
+pywin32==302
+imutils==0.5.4
+PyDirectInput==1.0.4

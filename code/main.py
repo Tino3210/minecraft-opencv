@@ -1,14 +1,11 @@
 # import folder image
-from multiprocessing.connection import wait
-from cv2 import WINDOW_OPENGL
-from matplotlib.pyplot import pause
 from diamondFinder import *
 from movePlayer import *
 import keyboard
 
 if __name__ == "__main__":
 
-    diamond_finder = DiamondFinder()
+    diamond_finder = DiamondFinder(name='Minecraft 1.18.2 - Singleplayer')
     player = Player()
 
     run = True
